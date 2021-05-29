@@ -1,8 +1,13 @@
 console.log("Welcome To Notes App");
 let reset = document.getElementById("reset")
 reset.addEventListener("click", function () {
-    localStorage.clear()
-    showNotes()
+    let userAnswer = confirm("Are you sure you want to clear Notes")
+    console.log(userAnswer)
+    if (userAnswer == true) {
+
+        localStorage.clear()
+        showNotes()
+    }
 })
 // If user add a note to the localStorage
 let addBtn = document.getElementById('addBtn');
