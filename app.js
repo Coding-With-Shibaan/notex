@@ -1,4 +1,3 @@
-console.log("Welcome To Notes App");
 let reset = document.getElementById("reset")
 let nfString
 let message
@@ -95,7 +94,6 @@ cardTxt = cardTxt.toLowerCase()
             message = document.getElementById("message")
             nfString = `No Search Result Found  For ${inputValue}`
             message.innerHTML = nfString
-            console.log(message)
         }
     })
 
