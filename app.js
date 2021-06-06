@@ -1,5 +1,7 @@
 console.log("Welcome To Notes App");
 let reset = document.getElementById("reset")
+let nfString
+let message
 reset.addEventListener("click", function () {
     let userAnswer = confirm("Are you sure you want to clear Notes")
     console.log(userAnswer)
@@ -28,6 +30,7 @@ addBtn.addEventListener("click", function (e) {
 // functiion to show notes
 
 function showNotes() {
+
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -47,6 +50,7 @@ function showNotes() {
            `
 
     });
+
     let notesElm = document.getElementById("notes")
     if (notesObj.length != 0) {
         notesElm.innerHTML = html;
@@ -79,17 +83,25 @@ search.addEventListener("input", function () {
     let noteCards = document.getElementsByClassName('noteCard')
     Array.from(noteCards).forEach(function (element) {
         let cardTxt = element.getElementsByTagName("p")[0].innerHTML
-
+cardTxt = cardTxt.toLowerCase()
         if (cardTxt.includes(inputValue)) {
             element.style.display = "block";
+            nfString = `Search Result Found For ${inputValue}`
+            message = document.getElementById("message")
+            message.innerHTML = nfString
+
         } else {
             element.style.display = "none";
-
+            message = document.getElementById("message")
+            nfString = `No Search Result Found  For ${inputValue}`
+            message.innerHTML = nfString
+            console.log(message)
         }
     })
 
 
 
 })
+
 
 
