@@ -1,9 +1,11 @@
-let reset = document.getElementById("reset")
+
+let reset = document.getElementById("reset")// Reset Button
+// Intializing neccesity variable
 let nfString
 let message
+// reset function 
 reset.addEventListener("click", function () {
     let userAnswer = confirm("Are you sure you want to clear Notes")
-    console.log(userAnswer)
     if (userAnswer == true) {
 
         localStorage.clear()
@@ -43,7 +45,7 @@ function showNotes() {
            <div class="card-body">
                <h5 class="card-title">Note ${index + 1}</h5>
                <p class="card-text">${element}</p>
-               <button id="${index}"onclick="deleteNotes(this.id)" class="btn btn-primary">Delete Note</button>
+               <button id="${index}"onclick="deleteNotes(this.id)" class="btn btn-danger">Delete Note</button>
            </div>
        </div>
            `
@@ -74,6 +76,7 @@ function deleteNotes(index) {
     showNotes()
 
 }
+// Searching  Text
 
 let search = document.getElementById('search')
 search.addEventListener("input", function () {
@@ -82,7 +85,7 @@ search.addEventListener("input", function () {
     let noteCards = document.getElementsByClassName('noteCard')
     Array.from(noteCards).forEach(function (element) {
         let cardTxt = element.getElementsByTagName("p")[0].innerHTML
-cardTxt = cardTxt.toLowerCase()
+        cardTxt = cardTxt.toLowerCase()
         if (cardTxt.includes(inputValue)) {
             element.style.display = "block";
             nfString = `Search Result Found For ${inputValue}`
@@ -94,12 +97,10 @@ cardTxt = cardTxt.toLowerCase()
             message = document.getElementById("message")
             nfString = `No Search Result Found  For ${inputValue}`
             message.innerHTML = nfString
+
         }
     })
 
 
 
 })
-
-
-
