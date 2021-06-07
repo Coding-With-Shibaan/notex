@@ -76,31 +76,50 @@ function deleteNotes(index) {
     showNotes()
 
 }
+
 // Searching  Text
 
+// Search Text
+
 let search = document.getElementById('search')
-search.addEventListener("input", function () {
+// Searching Button
+
+let searchBtn = document.getElementById("searchBtn")
+
+// Searching With Btn
+
+searchBtn.addEventListener("click", searchTxt)
+// Searching With Text
+
+search.addEventListener("input", searchTxt)
+// SearchTxt Function To Search
+
+function searchTxt() {
 
     let inputValue = search.value.toLowerCase()
     let noteCards = document.getElementsByClassName('noteCard')
     Array.from(noteCards).forEach(function (element) {
         let cardTxt = element.getElementsByTagName("p")[0].innerHTML
         cardTxt = cardTxt.toLowerCase()
-        if (cardTxt.includes(inputValue)) {
-            element.style.display = "block";
-            nfString = `Search Result Found For ${inputValue}`
-            message = document.getElementById("message")
-            message.innerHTML = nfString
+        if (inputValue != null) {
+            if (cardTxt.includes(inputValue)) {
+                element.style.display = "block";
+                nfString = `Search Result Found For ${inputValue}`
+                message = document.getElementById("message")
+                message.innerHTML = nfString
 
-        } else {
-            element.style.display = "none";
-            message = document.getElementById("message")
-            nfString = `No Search Result Found  For ${inputValue}`
-            message.innerHTML = nfString
+            } else {
+                element.style.display = "none";
+                message = document.getElementById("message")
+                nfString = `No Search Result Found  For ${inputValue}`
+                message.innerHTML = nfString
+
+            }
 
         }
+
     })
 
 
 
-})
+}
