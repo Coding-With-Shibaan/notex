@@ -85,7 +85,6 @@ let search = document.getElementById('search')
 // Searching Button
 
 let searchBtn = document.getElementById("searchBtn")
-
 // Searching With Btn
 
 searchBtn.addEventListener("click", searchTxt)
@@ -104,14 +103,14 @@ function searchTxt() {
         if (inputValue != null) {
             if (cardTxt.includes(inputValue)) {
                 element.style.display = "block";
-                nfString = `Search Result Found For ${inputValue}`
+                nfString = `Search Result Found For ${search.value}`
                 message = document.getElementById("message")
                 message.innerHTML = nfString
 
             } else {
                 element.style.display = "none";
                 message = document.getElementById("message")
-                nfString = `No Search Result Found  For ${inputValue}`
+                nfString = `No Search Result Found  For ${search.value}`
                 message.innerHTML = nfString
 
             }
